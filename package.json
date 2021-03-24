@@ -1,0 +1,29 @@
+{
+  "name": "mvc-hw",
+  "version": "1.0.0",
+  "description": "Tech Blog",
+  "main": "server.js",
+  "scripts": {
+    "test": "jest",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hannamunoz/tech-blog.git"
+  },
+  "author": "Hanna Munoz",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/hannamunoz/tech-blog/issues"
+  },
+  "homepage": "https://github.com/hannamunoz/tech-blog#readme",
+  "dependencies": {
+    "bcrypt": "^5.0.1",
+    "connect-session-sequelize": "^7.1.1",
+    "dotenv": "^8.2.0",
+    "express-handlebars": "^5.2.1",
+    "express-session": "^1.17.1",
+    "mysql2": "^2.2.5",
+    "sequelize": "^6.6.2"
+  }
+}
