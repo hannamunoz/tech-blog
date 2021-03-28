@@ -65,7 +65,7 @@ router.get('/:id', (req, res) => {
                     'content',
                     'user_id',
                     'blog_id',
-                    'created_id'
+                    'created_at'
                 ],
                 include: {
                     model: User,
@@ -127,7 +127,7 @@ router.put('/:id', userAuth, (req, res) => {
 });
 
 // Delete a post
-router.delete('/:id', userAuth, (req, res) =>{
+router.delete('/:id', userAuth, (req, res) => {
     Blog.destroy({
         where: {
             id: req.params.id
