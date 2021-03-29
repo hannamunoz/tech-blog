@@ -10,7 +10,7 @@ const helpers = require('./utils/helpers');
 const hbs = expressh.create({ helpers });
 
 const app = express();
-const PORT = process.env.PORT || 3001;
+const PORT = process.env.PORT || 3002;
 
 // This will start a session and then expire after 5 minutes
 const runsession = {
