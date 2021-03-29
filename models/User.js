@@ -17,7 +17,7 @@ User.init(
             autoIncrement: true
         },
         username: {
-            tpye: DataTypes.STRING,
+            type: DataTypes.STRING,
             allowNull: false,
             unique: true
         },

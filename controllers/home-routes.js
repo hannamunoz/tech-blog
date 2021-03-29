@@ -30,7 +30,7 @@ router.get('/', (req, res) => {
     })
         .then(blogData => {
             const blogs = blogData.map(blog => blog.get({ plain: true }));
-            res.sender('homepage', {
+            res.render('homepage', {
                 blogs,
                 loggedIn: req.session.loggedIn
             });
@@ -48,7 +48,7 @@ router.get('/login', (req, res) => {
         res.redirect('/dashboard');
         return;
     }
-    res.sender('login');
+    res.render('login');
 });
 
 // Get user signup page
@@ -59,7 +59,7 @@ router.get('/signup', (req, res) => {
 // Get page for new blog post
 router.get('/new-blog', userAuth, (req, res) => {
     if (req.session.loggedIn) {
-        res.sender('new-blog', { loggedIn: true });
+        res.render('new-blog', { loggedIn: true });
     }
 });
 
@@ -92,7 +92,7 @@ router.get('/blog/:id', userAuth, (req, res) => {
         }
 
         const blog = blogData.get({ plain: true });
-        res.sender('single-blog', { blog, loggedIn: req.session.loggedIn });
+        res.render('single-blog', { blog, loggedIn: req.session.loggedIn });
     })
     .catch(err => {
         console.log(err);

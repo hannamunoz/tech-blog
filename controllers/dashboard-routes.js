@@ -68,7 +68,7 @@ router.get('/edit/:id', userAuth, (req, res) => {
     .then(blogData => {
         if (blogData) {
             const blog = blogData.get({ plain: true });
-            res.sender('edit-blog', {
+            res.render('edit-blog', {
                 blog,
                 loggedIn: req.session.loggedIn
             });

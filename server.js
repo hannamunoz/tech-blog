@@ -2,39 +2,27 @@ const express = require('express');
 const session = require('express-session');
 const expressh = require('express-handlebars');
 const path = require('path');
-const SequelizeStore = require("connect-session-sequelize")(connect.session.Store);
+const SequelizeStore = require("connect-session-sequelize")(session.Store);
 
-const sequelize = require('sequelize');
+const sequelize = require('./config/connection');
 const routes = require('./controllers');
 const helpers = require('./utils/helpers');
-const hbs = exphbs.create({ helpers });
+const hbs = expressh.create({ helpers });
 
 const app = express();
 const PORT = process.env.PORT || 3001;
 
 // This will start a session and then expire after 5 minutes
-// const runsession = {
-//     secret: 'topsecret',
-//     store: mySession,
-//     resave: false,
-//     proxy: true,
-// }
-
-const mySession = new SequelizeStore({
-    db: sequelize,
-});
-app.use(
-    session({
-        secret: 'top-secret',
-        store: mySession,
-        resave: false,
-        saveUninitialized: false,
-        cookie: { maxAge: 300000 },
-        proxy: true,
+const runsession = {
+    secret: 'topsecret',
+    cookie: { maxAge: 300000 },
+    resave: false,
+    saveUninitialized: false,
+    store: new SequelizeStore({
+        db: sequelize
     })
-);
+};
 
-mySession.sync();
 
 // Express middleware
 app.use(express.json());
@@ -46,7 +34,7 @@ app.engine('handlebars', hbs.engine);
 app.set('view engine', 'handlebars');
 
 // Session middleware
-app.use(session(mySession));
+app.use(session(runsession));
 
 // Activate routes
 app.use(routes);
