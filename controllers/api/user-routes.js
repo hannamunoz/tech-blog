@@ -83,7 +83,7 @@ router.post('/login', (req, res) => {
             return;
         };
 
-        const validPassword = userData.passwordConfirm(req.body.password);
+        const validPassword = userData.passwordCheck(req.body.password);
 
         if (!validPassword) {
             res.status(401).json({ message: 'That username or password does not exist' });
