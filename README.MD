@@ -1,4 +1,3 @@
-![Bytecode Blogging]()
 
 # Bytecode Blogging:
 This application is used for blogging about coding! A new user can signup to begin posting or read through the posts done by others without a login. When logged in, a user can create a new blog as well as comment on other posts. This is a RESTful API application that uses that follows MVC while using MySQL and Sequelize as an ORM. For the front-end, handlebars is used.
