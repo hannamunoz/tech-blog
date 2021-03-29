@@ -1,14 +1,14 @@
 async function createComment(event) {
     event.preventDefault();
 
-    const content = document.querySelector('#comment-text').nodeValue.trim();
+    const content = document.querySelector('#comment-text').value.trim();
     const blog_id = window.location.toString().split('/')[
         window.location.toString().split('/').length - 1
     ];
     console.log('comment.js:', content, blog_id);
 
     if (content) {
-        const response = await fetch('/api/comment', {
+        const response = await fetch('/api/comments', {
             method: 'POST',
             body: JSON.stringify({
                 blog_id,
